@@ -12,7 +12,6 @@ struct ContentView: View {
         VStack{
             HStack {
                 Text("Hello  Code")
-                Spacer()
                 Text ("Hello world")
             }
             HStack {
@@ -23,6 +22,15 @@ struct ContentView: View {
                 Text("Hello  Code")
                 Text ("Hello world")
             }
+            Button("Test Button")
+            {
+                print("Test button pressed")
+            }
+            .foregroundColor(.white)
+            .padding()
+            .font(.title)
+            .background(.blue)
+            .cornerRadius(10)
         }
     }
 }
