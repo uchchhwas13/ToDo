@@ -11,7 +11,8 @@ import SwiftUI
 struct ToDoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let toDoStorage = ToDoStorage()
+            ToDoListView().environmentObject(toDoStorage)
         }
     }
 }

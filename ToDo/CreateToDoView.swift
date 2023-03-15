@@ -11,6 +11,7 @@ struct CreateToDoView: View {
     @State var toDoTitle = ""
     @State var important = false
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var toDoStorage: ToDoStorage
     var body: some View {
         List {
             Section {
@@ -26,6 +27,7 @@ struct CreateToDoView: View {
                 HStack {
                     Spacer()
                     Button("Save") {
+                        self.toDoStorage.toDos.append(ToDoItem(title: self.toDoTitle, important: self.important))
                         self.presentationMode.wrappedValue.dismiss()
                     }.disabled(toDoTitle.isEmpty)
                     Spacer()
