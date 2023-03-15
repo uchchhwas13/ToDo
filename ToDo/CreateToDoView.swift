@@ -9,8 +9,29 @@ import SwiftUI
 
 struct CreateToDoView: View {
     @State var toDoTitle = ""
+    @State var important = false
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        TextField("Add to do items", text:$toDoTitle)
+        List {
+            Section {
+                TextField("Add to do items", text:$toDoTitle)
+            }
+            Section {
+                Toggle(isOn: $important)
+                {
+                    Text("Important")
+                }
+            }
+            Section {
+                HStack {
+                    Spacer()
+                    Button("Save") {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }.disabled(toDoTitle.isEmpty)
+                    Spacer()
+                }
+            }
+        }.listStyle(GroupedListStyle())
     }
 }
 
